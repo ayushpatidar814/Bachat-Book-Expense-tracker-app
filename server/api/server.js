@@ -3,11 +3,11 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const serverless = require("serverless-http");
-const connectDB = require("./config/db.js")
-const authRoutes = require("./routes/authRoutes.js")
-const incomeRoutes = require("./routes/incomeRoutes.js")
-const expenseRoutes = require("./routes/expenseRoutes.js")
-const dashboardRoutes = require("./routes/dashboardRoutes.js")
+const connectDB = require("../config/db.js")
+const authRoutes = require("../routes/authRoutes.js")
+const incomeRoutes = require("../routes/incomeRoutes.js")
+const expenseRoutes = require("../routes/expenseRoutes.js")
+const dashboardRoutes = require("../routes/dashboardRoutes.js")
 
 const app = express();
 
@@ -43,6 +43,6 @@ if (process.env.VERCEL) {
     const serverless = require("serverless-http");
     module.exports = serverless(app);
   } else {
-    const PORT = process.env.PORT || 5000;
+    const PORT = process.env.PORT || "https://bachat-book-expense-tracker-app.vercel.app";
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
   }
