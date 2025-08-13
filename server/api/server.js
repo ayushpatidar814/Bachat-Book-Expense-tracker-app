@@ -43,6 +43,6 @@ if (process.env.VERCEL) {
     const serverless = require("serverless-http");
     module.exports = serverless(app);
   } else {
-    const PORT = process.env.PORT || "https://bachat-book-expense-tracker-app.vercel.app";
+    const PORT = process.env.PORT || 5000;
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
   }
