@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://expense-tracker-app-zeta.vercel.app';
+export const BASE_URL = 'https://bachat-book-expense-tracker-app.onrender.com';
 
 // Utils/apiPaths.js
 export const API_PATHS = {
