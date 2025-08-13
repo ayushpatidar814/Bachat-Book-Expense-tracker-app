@@ -10,15 +10,26 @@ const dashboardRoutes = require("./routes/dashboardRoutes.js")
 
 const app = express();
 
-// Middleware to handle CORS
-app.use(
-    cors({
-        origin: process.env.CLIENT_URL || "*",
-        methods: ["GET", "POST", "PUT", "DELETE"],
-        allowedHeaders: ["content-type", "Authorization"],
-        credentials: true,
-    })
-);
+// Production frontend URL
+const allowedOrigins = [
+  'https://bachat-book-expense-tracker-app-1.onrender.com'
+];
+
+// CORS config
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like curl, Postman) for testing
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
+
 
 app.use(express.json());
 connectDB();
