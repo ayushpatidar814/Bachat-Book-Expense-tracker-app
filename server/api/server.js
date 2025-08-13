@@ -36,13 +36,6 @@ app.get("/", (req, res) => {
     res.send("🚀 Welcome Mr. Ayush");
   });
 
-// const PORT = process.env.PORT || 5000;
-// app.listen(PORT, ()=> console.log(`Server running on port ${PORT}`));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, ()=> console.log(`Server running on port ${PORT}`));
 
-if (process.env.VERCEL) {
-    const serverless = require("serverless-http");
-    module.exports = serverless(app);
-  } else {
-    const PORT = process.env.PORT || 5000;
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-  }
