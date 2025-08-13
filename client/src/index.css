@@ -34,5 +34,5 @@ body{
 }
 
 .add-btn-fill {
-  @apply text-white bg-primary;
+  @apply text-white bg-purple-600;
 }

@@ -9,6 +9,7 @@ const expenseRoutes = require("./routes/expenseRoutes.js")
 const dashboardRoutes = require("./routes/dashboardRoutes.js")
 
 const app = express();
+connectDB();
 
 // Middleware to handle CORS
 app.use(
@@ -21,7 +22,9 @@ app.use(
 
 app.use(express.json());
 
-connectDB();
+app.get("/", (req, res) => {
+    res.send("🚀 Welcome Mr. Ayush");
+  });
 
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/income", incomeRoutes);
@@ -31,9 +34,6 @@ app.use("/api/v1/dashboard", dashboardRoutes);
 // Serve uploads folder
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-app.get("/", (req, res) => {
-    res.send("🚀 Welcome Mr. Ayush");
-  });
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, ()=> console.log(`Server running on port ${PORT}`));
